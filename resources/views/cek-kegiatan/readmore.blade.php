@@ -18,7 +18,7 @@
                                     <div class="">
                                         <h5>Start : {{$activity->tgl_mulai}} - {{$activity->tgl_selesai}}</h5>
                                         <h5>{{$activity->jumlah_peserta}} -Seat</h5>
-                                        <h5>IDR {{number_format($activity->idr,2)}}</h5>
+                                        <h5>IDR {{number_format($activity->idr)}}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -48,14 +48,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Kode Kegiatan</label>
-                                    <input type="text" class="form-control" value="{{ $activity->kode_activity }}">
+                                    <input type="text" class="form-control" disabled="true" value="{{ $activity->kode_activity }}">
                                     <input type="hidden" name="activity_id" class="form-control" value="{{ $activity->id }}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">Harga</label>
-                                    <input type="text" class="form-control" value="{{ $activity->idr }}">
+                                    <label for="">Harga</label>                        
+                                    <input type="text" class="form-control" disabled="true" value="{{number_format($activity->idr)}}">                                    
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -64,7 +64,7 @@
                                     <input type="number" class="form-control" name="qty">
                                 </div>
                             </div>
-
+                             {{-- inputan untuk field status --}}
                             <input type="hidden" name="status" class="form-control" value="pending">
                             <div class="ml-3">
                                 <button type="submit" class="btn btn-primary">Beli Tiket</button>

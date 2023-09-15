@@ -18,7 +18,7 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Kode Kegiatan</th>
+                                        <th>Action</th>
                                         <th>NISN</th>
                                         <th>Nama</th>
                                         <th>Tanggal Daftar</th>   
@@ -26,24 +26,35 @@
                                     </tr>
                                 </thead>
 
-                                <tbody>
-                                    @foreach ($pendings as $pend)
-                                        <tr>
+                                <tbody>                                                             
+                                    @if ($Cpending == 0) 
+                                    <tr>
+                                        <td>
                                             <td>
-                                                <a href="{{route('upload-pembayaran', $pend->id)}}" class="btn btn-outline-info btn-sm">
-                                                    {{$pend->activity->kode_activity}}
-                                                </a>
+                                                <td colspan="8"> Anda belum mendaftar apapun !</td>    
                                             </td>
-                                            <td>{{$pend->user->students->first()->nisn}}</td>
-                                            <td>{{$pend->user->name}}</td>
-                                            <td>{{$pend->created_at->diffForHumans()}}</td>
-                                            <td>
-                                                <span class="badge bg-secondary text-white">
-                                                    {{$pend->status}}
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                        </td>
+                                    </tr>                                                                                                                   
+                                     @else 
+                                     @foreach ($pendings as $pend)
+                                    <tr>
+                                        <td>
+                                            <a href="{{route('upload-pembayaran', $pend->id)}}" class="btn btn-outline-info btn-sm">
+                                                Verifikasi Pembayaran
+                                            </a>
+                                        </td>
+                                        <td>{{$pend->user->students->first()->nisn}}</td>
+                                        <td>{{$pend->user->name}}</td>
+                                        <td>{{$pend->created_at->diffForHumans()}}</td>
+                                        <td>
+                                            <span class="badge bg-secondary text-white">
+                                                {{$pend->status}}
+                                            </span>
+                                        </td>
+                                     </tr>
+                                     @endforeach
+                                     @endif
+                                   
                                 </tbody>
                             </table>
                             {{$pendings->links()}}

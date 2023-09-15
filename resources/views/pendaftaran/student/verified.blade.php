@@ -27,19 +27,30 @@
                                 </thead>
 
                                 <tbody>
-                                    @foreach ($verifieds as $verif)
+                                    @if ($Cverified == 0)
                                         <tr>
-                                            <td>{{$verif->activity->kode_activity}}</td>
-                                            <td>{{$verif->user->students->first()->nisn}}</td>
-                                            <td>{{$verif->user->name}}</td>
-                                            <td>{{$verif->created_at->diffForHumans()}}</td>
                                             <td>
-                                                <span class="badge bg-secondary text-white">
-                                                    {{$verif->status}}
-                                                </span>
+                                                <td>
+                                                    <td colspan="8">Data anda belum ada yang terverifikasi !</td>
+                                                </td>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    @else
+                                    @foreach ($verifieds as $verif)
+                                    <tr>
+                                        <td>{{$verif->activity->kode_activity}}</td>
+                                        <td>{{$verif->user->students->first()->nisn}}</td>
+                                        <td>{{$verif->user->name}}</td>
+                                        <td>{{$verif->created_at->diffForHumans()}}</td>
+                                        <td>
+                                            <span class="badge bg-secondary text-white">
+                                                {{$verif->status}}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                @endforeach  
+                                    @endif
+                                   
                                 </tbody>
                             </table>
                             {{$verifieds->links()}}

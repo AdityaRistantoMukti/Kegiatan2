@@ -12,7 +12,7 @@ class PendingController extends Controller
     public function index()
     {
         $pendings = Register::where(['user_id' => Auth::user()->id, 'status' => 'pending'])->paginate(6);
-
-        return view('pendaftaran.student.pending', compact('pendings'));
+        $Cpending = Register::where('status','pending')->count();
+        return view('pendaftaran.student.pending', compact('pendings','Cpending'));
     }
 }

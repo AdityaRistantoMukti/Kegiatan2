@@ -62,8 +62,10 @@
                                </tr>
                            @empty
                                <td>
-                                   <td colspan="8">Data Kosong</td>
-                               </td>
+                                    <td>
+                                    <td colspan="8">Data kosong !</td>    
+                                    </td>
+                                </td>
                            @endforelse
                         </tbody>
                     </table>
